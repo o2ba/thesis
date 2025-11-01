@@ -13,7 +13,7 @@
     ),
     columns: cols
   )
-  set par(justify: true, leading: 0.5em, spacing: 2em)
+  set par(justify: true, leading: 0.5em, spacing: 2em, first-line-indent: 1em)
    set text(
     font: "Times New Roman",
     size: 10pt,
@@ -24,6 +24,9 @@
   doc
 }
 
+#show heading: set block(below: 2em, above: 2em)
+
+#set par(first-line-indent: 1em)
 
 #show: doc => conf(
   doc,
@@ -39,7 +42,7 @@
   ---
   
   *Suppression as a Service* \
-  Suppressive Reputation Management in Germany's POI Economy\ \
+  Suppressive Reputation Management in Germany's Point of Interest Economy\ \
   // How is the implementation of the Digital Services Act impacting the integrity and availability of online reviews on Google in Germany, and what are the potential implications for consumer information search and trust in the digital marketplace?
   // How does the geographic concentration of Digital Services Act enforcement create differential information environments for consumers across EU markets, and what are the implications for consumer trust and decision-making in digital review platforms? \
 
@@ -114,6 +117,8 @@
 // #pagebreak()
 #include "sections/2_literature_review.typ"
 #include "sections/3_methodology.typ"
+
+#include "sections/99_technical_appendix.typ"
 
 /*
 = Methodology 
