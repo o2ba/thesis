@@ -114,11 +114,11 @@
 )
 
 #include "sections/1_introduction.typ"
-// #pagebreak()
+#pagebreak()
 #include "sections/2_literature_review.typ"
-#include "sections/3_methodology.typ"
+/* #include "sections/3_methodology.typ"
 
-#include "sections/99_technical_appendix.typ"
+#include "sections/99_technical_appendix.typ" */
 
 /*
 = Methodology 
