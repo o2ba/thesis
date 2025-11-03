@@ -1,63 +1,64 @@
-// Additive: Increase visibility of positive signals, Suppressive: Signal jamming
-
-/*
-
-- Builds proper foundations (§2.1-2.2): Readers understand why reputation matters
-
-- Establishes stakes (§2.3): Economic evidence shows magnitude of reputation effects
-
-- Explains transformation (§2.4): Platforms changed game
-
-- Introduces framework (§2.5): Additive vs. suppressive as analytical lens
-
-- Provides context (§2.6): German legal environment explains mechanism
-
-- Identifies gap (§2.7): Sets up your empirical contribution
-
-*/
-
-// Recipe for suppressive removals
-// Though I dont think I can prove it (even with lit), I think suupressive is actually better than additive as we saw in one research that the impact of 1 star is higher than 5 star, meaning removing 1 star review is better than adding 5 star reviews (forgot who said this)
-// - The business cares about their reputation
-// - A business has a negative reputation
-// - An abuse mechanism exists
-//   - Platform liability (usually required)
-//   - Government regulation / business protection (defamation laws in germany)
-//   - Reporting mechanisms (DSA)
-// - Economic feasability
-// 
-
-
-// Introduce information asym: dual information asym unlike Akerlof's market for lemons
-
-// Introduce early WOM, prove that WOM is an tool used by consumers for purchase decisions. Early interpersonal mechanisms? Maybe also short thing about influencers
-
-// Page 2: Show managerial and consumer impact of information asym (sets the baseline for WHY a business might engage in rep mgmt)
-
-// Page 3: Bridge to eWOM maybe ? Chevalier & Mayzlin?
-
-// Page 4: Maybe I can now introduce my frameowrk on additivie vs suppressive rep mgmt., or maybe this is too early
-
-
 = Literature Review and Theoretical Framework
+
+#set par(leading: 1em, justify: false)
+
+#show table.cell.where(y: 0): strong
+#set table(
+  inset: (x, y) => if y == 0 { (x: 8pt, y: 8pt) } else { (x: 10pt, y: 10pt) },
+  stroke: (x, y) => if y == 0 {
+    (bottom: 0.7pt + black)
+  },
+  align: left
+)
+
+#table(
+  columns: (130pt, 1fr),
+  table.header([Author (Year)], [Core Argument(s)]),
+  [#cite(<akerlof_market_1970>, form: "prose")], [Markets fail when buyers cannot observe quality ex ante],
+  [#cite(<nelson_information_1970>, form: "prose")], [Quality becomes knowable only through consumption],
+  [#cite(<parasuraman_conceptual_1985>, form: "prose")], [SERVQUAL model, service quality is the gap between expectations and perceptions of performance],
+  [#cite(<shapiro_premiums_1983>, form: "prose")], [Reputation functions as a form of intangible capital; firms expect future profits in exchange for maintaining the reputation today],
+  [#cite(<chevalier_effect_2006>, form: "prose")], [Higher average ratings and more positive reviews lead to higher sales (for books); Negative reviews are more influential than positive ones (negativity bias)]
+)
+
+#set par(leading: 2em, justify: true)
+
+#pagebreak()
+
 
 
 == Information Asymmetry in Markets for Experience Goods
 
 Markets function efficiently when buyers and sellers possess symmetric information about the quality of goods being exchanged. Yet in many consumer markets, this condition fails systematically. #cite(<akerlof_market_1970>, form: "prose") formalized how pre-purchase information asymmetries undermine market efficiency: when sellers possess private information about product quality that buyers cannot verify before transaction, adverse selection may drive high-quality goods from the market. His analysis of used automobile markets, where dealers know whether a car is reliable but buyers cannot distinguish lemons from peaches, demonstrated how asymmetric information creates welfare losses and potential market collapse.
 
-Experience goods present a distinct but related informational challenge. #cite(<nelson_information_1970>, form: "prose") distinguished between search goods, whose quality can be verified through inspection before purchase, and experience goods, whose quality becomes known only through consumption. Restaurants, medical services, personal-care providers, and most consumer services fall into the latter category: a diner cannot assess food quality by examining a menu, and a patient cannot evaluate clinical competence by inspecting a waiting room. Unlike #cite(<akerlof_market_1970>, form: "author")'s used-car market - where sellers possess private information about objective quality attributes that buyers lack, experience goods involve quality dimensions that are inherently unknowable ex-ante by both parties. Service quality is co-produced through the interaction of provider inputs and consumer characteristics, varies across transactions, and depends partly on subjective evaluation: as #cite(<parasuraman_conceptual_1985>, form: "prose") formalized, service quality reflects the difference between perceived and expected service. A restaurant meal's quality emerges from ingredients, preparation, timing, and the diner's particular preferences and mood; it cannot be fully specified in advance.
+Experience goods present a distinct but related informational challenge. #cite(<nelson_information_1970>, form: "prose") distinguished between search goods (e.g clothing or furniture) whose quality can be verified through inspection before purchase, and experience goods, whose quality becomes known only through consumption. Restaurants, medical services, personal-care providers, and most consumer services fall into the latter category: a diner cannot assess food quality by examining a menu, and a patient cannot evaluate clinical competence by inspecting a waiting room. Unlike #cite(<akerlof_market_1970>, form: "author")'s used-car market - where sellers possess private information about objective quality attributes that buyers lack, experience goods involve quality dimensions that are inherently unknowable ex-ante by both parties. Service quality is co-produced through the interaction of provider inputs and consumer characteristics, varies across transactions, and depends partly on subjective evaluation: As #cite(<parasuraman_conceptual_1985>, form: "prose") demonstrated, perceived service quality depends on the gap between expectations and experiences rather than on any objective performance measure, reinforcing that quality in such markets becomes knowable only post-consumption.
 
-// We can revisit this parasuraman paper later by saying that reviews are not a perfect metric for actual service quality, but rather as observed based on percieved and expected service - we will reuse in § 2.4
-
-This creates an informational structure more complex than #cite(<akerlof_market_1970>, form: "author")'s unidirectional asymmetry. On the demand side, consumers face an #cite(<akerlof_market_1970>, form: "author")-type problem: they cannot distinguish high-quality from low-quality providers before experience, creating potential for adverse selection. On the supply side, firms face their own informational constraint: while they control service inputs and processes, consumer perceptions and satisfaction remain largely opaque until feedback is voluntarily expressed or actively solicited. A physician may follow clinical best practices yet remain unaware that patients find their manner dismissive; a restaurateur may use premium ingredients yet not realize customers consider portions inadequate. This creates dual opacity: consumers cannot assess provider quality, and providers cannot observe consumer perceptions. Neither party can rely on direct observation.
-
-// honestly very good paragraph. very good for image. will keep this way
+This creates an informational structure more complex than Akerlof's (1970) unidirectional asymmetry. On the demand side, consumers face an Akerlof-type problem: they cannot distinguish high-quality from low-quality providers before experience, creating potential for adverse selection. On the supply side, firms face their own informational constraint: while they control service inputs and processes, consumer perceptions remain largely opaque until feedback is voluntarily expressed. This creates dual opacity: consumers cannot assess provider quality, and providers cannot observe consumer perceptions without some form of feedback exchange
 
 In such environments, reputation emerges as the primary mechanism for reducing information asymmetry. #cite(<shapiro_premiums_1983>, form: "prose") formalized reputation as a form of intangible capital that sellers invest in and consumers rely upon when quality cannot be directly verified. Through repeated interactions, high-quality providers build reputational assets that signal credibility, while low-quality providers face reputational sanctions that constrain future demand. Reputation thus functions as a substitute for direct quality observation: by aggregating past consumers' experiences, it enables future consumers to make inferred quality assessments and provides firms with feedback about how their service performance is perceived. The efficiency of this mechanism depends critically on how experiential information circulates among market participants - that is, on the information architecture through which post-consumption feedback becomes observable and actionable.
 
-Yet the architecture through which feedback circulated in pre-digital  markets imposed severe constraints. Informal interpersonal word-of-mouth, while personally trusted, remained geographically  bounded, temporally ephemeral, and informationally incomplete for both consumers and firms @arndt_role_1967.
+In contemporary markets, these reputational signals are no longer exchanged interpersonally but through digital intermediaries that aggregate and rank consumer feedback at scale @chevalier_effect_2006. Control over these visibility mechanisms determines whose experiences shape perceived quality, making the governance of online reputation a core determinant of market transparency. Critically, this creates incentives for strategic manipulation not only through adding favorable signals @mayzlin_promotional_2014, but also through suppressing unfavorable ones, a distinction with important implications for how reputation systems function in practice.
 
+== Electronic Word-of-Mouth
+
+
+Digital platforms fundamentally restructured the information architecture through which experiential knowledge circulates. #cite(<dellarocas_digitization_2003>, form: "prose") conceptualizes online feedback mechanisms as systems that harness the Internet's bidirectional communication capabilities to engineer large-scale word-of-mouth networks. Unlike pre-digital WOM, which was geographically bounded, temporally ephemeral, and informationally incomplete, platforms made feedback persistent: digital reviews remain indefinitely accessible, accumulating into archives that document consumption histories across time. Platforms also made feedback aggregable by converting subjective experiences into quantified ratings, enabling statistical summarization that transforms individual anecdotes into comparable metrics. Most critically, platforms made feedback bidirectionally visible: businesses gained real-time access to consumer perceptions expressed directly and publicly.
+
+Yet platforms do not function as neutral infrastructure. They actively mediate the information they host through design choices that determine what feedback becomes visible and how it is displayed. A platform might show only recent reviews, display average ratings more prominently than review text, or allow businesses to flag content for removal. These choices shape which reputational signals reach consumers and create potential mechanisms for manipulation. In Germany, this gatekeeping function carries particular weight: a 2025 Federal Cartel Office ruling identified Google's control over points-of-interest data as a de facto monopoly @bundeskartellamt_beschluss_2025 over local business visibility. By determining which businesses appear in search results and which reviews are displayed, Google effectively determines which reputational signals become publicly legible within Germany's digital marketplaces.
+
+This concentration of gatekeeping power raises questions about how firms navigate platform moderation when economic incentives favor reputation management. Understanding these dynamics requires examining the strategies firms employ and the institutional mechanisms platforms provide for disputing or removing unfavorable content
+
+
+== Reputation Management
+
+== Platform Governance
+
+== Research Framework and Hypotheses
+
+
+
+
+ /*
 /* #cite(<akerlof_market_1970>, form: "author") himself identified seller-initiated mechanisms that could mitigate adverse selection: warranties and guarantees function as costly signals by shifting risk from buyer to seller, credibly distinguishing high-quality providers willing to absorb potential returns from low-quality providers who would face unsustainable warranty costs. Spence (1973) formalized this logic more generally: when quality is unobservable, costly signals enable high-quality actors to separate themselves from low-quality imitators, provided the signal's cost is negatively correlated with underlying quality. Yet these mechanisms presuppose objectively verifiable quality dimensions. A car either starts or it doesn't; a warranty claim is adjudicable. Experience goods resist such contractibility: subjective perceptions of service quality - whether a waiter was attentive, a massage was relaxing, a diagnosis was empathetic - cannot be credibly guaranteed ex-ante. The solution that emerged was consumer-generated signaling: word-of-mouth communication, and later online reviews, function as credibly costly signals (in time, effort, and social capital) that transmit experiential information from past consumers to future ones. These signals differ from Spence's education credential or Akerlof's warranty in a crucial respect: they originate from third parties rather than sellers, making them less susceptible to strategic manipulation. Yet as digital platforms centralized the transmission of these signals, they also created new vulnerabilities: if reputational signals can be systematically suppressed or jammed, the informational infrastructure that supports market efficiency becomes itself subject to strategic distortion */
 
 
