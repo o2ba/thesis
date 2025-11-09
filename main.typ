@@ -102,10 +102,12 @@
   )
 ])
 
-#include "sections/1_introduction.typ"
+#include "sections/1_introduction.typ" 
 #pagebreak()
 #include "sections/2_literature_review.typ"
+#pagebreak()
 #include "sections/3_methodology.typ"
+
 
 #pagebreak()
 #bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association")
@@ -113,4 +115,7 @@
 #pagebreak()
 #set par(first-line-indent: 0em)
 
-#include "sections/appendix/lumen.typ"
+#set page(flipped: true)
+#include "sections/appendix/1_tdb_cols.typ"
+
+// #include "sections/appendix/lumen.typ"

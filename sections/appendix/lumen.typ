@@ -5,6 +5,8 @@
 
 = Lumen
 
+== Technical Implementation
+
 *Total Population Size (Businesses, URLs)*
 
 #figure(
