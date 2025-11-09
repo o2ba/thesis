@@ -91,6 +91,9 @@
 
 #counter(page).update(n => n - 2)
 
+#set par(leading: 2em)
+#show heading: set text(navy)
+
 #set page(footer: context [
     #h(1fr)
     #counter(page).display(
@@ -99,46 +102,15 @@
   )
 ])
 
-#set par(leading: 2em)
-#show heading: set text(navy)
-
-
 #include "sections/1_introduction.typ"
 #pagebreak()
 #include "sections/2_literature_review.typ"
-/* #include "sections/3_methodology.typ"
-
-#include "sections/99_technical_appendix.typ" */
-
-/*
-= Methodology 
-== Digital Services Act Transparency Database
-Database for enforcement
-== Lumen Database
-Database for incoming reports
-
-= Results
-== Most Article 16 DSA Removals are for Defamation
-== Most Defamation Removals are in Germany Only
-== Enforcement Rates are Significantly lower outside of germany 
-*/
-
-
-/*
-= Methodology
-= Results
-= Discussion
-= Conclusion
-*/
-
+#include "sections/3_methodology.typ"
 
 #pagebreak()
-
-#set par(leading: 1em)
-#show bibliography: set heading(numbering: "1.")
 #bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association")
 
-/*
 #pagebreak()
-= Appendix
-#include "sections/appendix.typ"
+#set par(first-line-indent: 0em)
+
+#include "sections/appendix/lumen.typ"
