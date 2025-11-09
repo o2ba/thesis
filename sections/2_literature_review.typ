@@ -105,6 +105,6 @@ This convergence should manifest empirically in two observable patterns. First, 
 Second, if removal has become a reliable strategy rather than an uncertain legal gamble, businesses should experience high success rates when they contest reviews. Platforms facing potential liability under German court precedents likely find compliance more attractive than litigation: removal becomes the path of least resistance, cheaper than court defense and less risky than maintaining potentially actionable content. If this logic holds, businesses claiming reviews lack valid customer relationships should achieve consistently high removal rates. In contrast, if removal remained genuinely discretionary or required substantive evidence of illegitimacy, success rates would reflect the actual distribution of fraudulent versus authentic negative reviews, likely producing considerably lower approval rates. Moreover, if suppression functions as a reliable tool, we should observe businesses using it systematically and repeatedly rather than as an occasional legal remedy. These expectations yield two testable hypotheses:
 
 
-_ -- H1: Germany’s protective defamation and personality-right regime enables businesses to pursue suppressive reputation-management strategies, resulting in a higher incidence of online review removals. _
+-- *H1*: _Germany’s businesses pursue review removal at an overrepresented scale_
 
-_ -- H2: In the German context, businesses that request removal of negative reviews can reliably expect compliance, with systematic use by repeat filers indicating this has become a standardized practice_
+-- *H2:* _Business can generally expect their takedown requests to be effective (>50% success)_
