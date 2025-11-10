@@ -111,6 +111,7 @@
 #include "sections/4_results.typ"
 #pagebreak()
 #include "sections/5_discussion.typ"
+#include "sections/6_conclusion.typ"
 
 #pagebreak()
 #bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association")
