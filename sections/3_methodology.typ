@@ -14,7 +14,7 @@
 
 This study uses a two-stage empirical design to test (H1) whether businesses in Germany systematically use legal mechanisms to suppress negative reviews at a disproportionate scale and (H2) whether removal requests achieve reliably high success rates. The analysis combines aggregate platform-level data with granular complaint-level data to assess both the volume and effectiveness of suppressive reputation management.
 
-Stage 1 examines removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms report moderation decisions by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1–October 20, 2025, the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression. A disproportionate German share of EU‑wide removals supports H1.
+Stage 1 examines removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms report moderation decisions by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1–October 20, 2025, reflecting the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression. A disproportionate German share of EU‑wide removals supports H1.
 
 Stage 2 evaluates removal success rates using complaint‑level data from the Lumen Database @lumen_lumen_2025, which hosts Google’s transparency reports on defamation‑based takedown requests. Each record identifies targeted review URLs, enabling verification of whether the content remains accessible. The sample includes complaints filed October 1–20, 2025, verified on October 31 (≥10‑day lag) within Lumen’s API rate limits. A 1% Bernoulli random sample supports testing whether success rates exceed 50%, the benchmark at which businesses can reliably expect compliance (H2).
 
@@ -49,10 +49,7 @@ The sample includes complaints filed October 1–20, 2025, verified on October 3
 
 /* Applying a date filter (`2025-06-01 to 2025-10-20`), and a platform filter (`Google Maps`), we disaggregate by source to understand the reason that led to the investigation on the relevant content. #cite(<european_comission_regulation_2022>, supplement: "Article 17 (3)(b)")
 */
-After applying date (2025‑06‑01 - 2025‑10‑20) and platform (Google Maps) filters, moderation actions were grouped by source type to identify the origin of each decision. Article 16 cases represent moderation actions initiated through external legal complaints invoking national law, while voluntary removals reflect actions taken under Google’s internal content policies @european_comission_regulation_2022(supplement: "Article 17 (3)(b)").
-
-This disaggregation distinguishes legally compelled removals from policy‑based moderation and forms the basis for quantifying Germany’s relative share of EU‑wide legal takedowns.
-
+After applying date (2025‑06‑01 - 2025‑10‑20) and platform (Google Maps) filters, moderation actions were grouped by source type to identify the origin of each decision. Article 16 cases represent moderation actions initiated through external legal complaints invoking national law, while voluntary removals reflect actions taken under Google’s internal content policies #cite(<european_comission_regulation_2022>, supplement: "Article 17 (3)(b)"). @by-source-type shows the total actions per source type.
 
 #set par(leading: 1em, justify: false)
 
@@ -72,7 +69,28 @@ This disaggregation distinguishes legally compelled removals from policy‑based
 
 #set par(leading: 2em, justify: true)
 
-The vast majority of Google Maps moderation actions are of voluntary nature; while Article 16 cases, those based on external legal complaints, represent a smaller but analytically relevant share. To examine the composition of these legal removals in more detail, @mod-actions-by-cat disaggregates Article 16 actions by their reported decision ground.
+Though this majority of Google Maps moderation actions are of voluntary nature, these moderations are generally applied EU-wide. @jur-composition shows a breakdown of the amount of EU-wide removals
+
+#set par(leading: 1em, justify: false)
+
+/*     "query": "select count(*) as decision_count from statement_index where received_date between '2025-06-01' and '2025-10-20' and platform_name = 'Google Maps' and source_type = 'SOURCE_ARTICLE_16' and territorial_scope = 'de' and territorial_scope = 'at' and territorial_scope = 'be' and territorial_scope = 'bg' and  territorial_scope = 'hr' and  territorial_scope = 'cy' and territorial_scope = 'cz' and  territorial_scope = 'dk' and territorial_scope = 'ee' and  territorial_scope = 'fi' and  territorial_scope = 'fr' and territorial_scope = 'gr' and  territorial_scope = 'hu' and  territorial_scope = 'ie' and territorial_scope = 'it' and  territorial_scope = 'lv' and territorial_scope = 'lt' and  territorial_scope = 'lu' and  territorial_scope = 'mt' and territorial_scope = 'nl' and  territorial_scope = 'pl' and  territorial_scope = 'pt' and  territorial_scope = 'ro' and  territorial_scope = 'sk' and territorial_scope = 'si' and  territorial_scope = 'es' and  territorial_scope = 'se'" */
+
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 100pt),
+    table.header([Source Type], [EU Wide Actions], [%]),
+    [Voluntary], [22,876,692], [$99.25%$],
+    [Article 16], [1,229], [$0.08%$],
+    [Other Type Notification], [130], [$13.19%$],
+  ),
+  caption: [Jurisdictional Composition of DSA actions]
+) <jur-composition>
+
+#set par(leading: 2em, justify: true)
+
+
+To examine the composition of these legal removals in more detail, @mod-actions-by-cat disaggregates Article 16 actions by their reported decision ground.
 
 #set par(leading: 1em, justify: false)
 
@@ -136,7 +154,7 @@ The vast majority of Article 16 “Illegal and Harmful Speech” moderation acti
 ) <illegal-reason-breakdown>
 #set par(leading: 2em, justify: true)
 
-Combined, Germany-specific defamation removals constitute 1,512,595 of the 1,514,957 total Article 16 actions across all categories and jurisdictions (99.84%) #footnote[$1,512,595 div 1,514,957 = 99.84%$]. No significance is conducted as Germany's figures are orders of magnitude #footnote[$log_10 (1,512,700 div 100) = 4.1797$. Comparable by population (France, Spain, Poland)] higher than comparable countries 
+Combined, Germany-specific defamation removals constitute 1,512,595 of the 1,514,957 total Article 16 actions across all categories and jurisdictions (99.84%) #footnote[$1,512,595 div 1,514,957 = 99.84%$]. No significance is conducted as Germany's figures are orders of magnitude #footnote[$log_10 (1,512,700 div 100) = 4.1797$] higher than comparable countries 
 
 === Lumen Database
 

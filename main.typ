@@ -107,11 +107,14 @@
 #include "sections/2_literature_review.typ"
 #pagebreak()
 #include "sections/3_methodology.typ"
-
+#pagebreak()
+#include "sections/4_results.typ"
+#pagebreak()
+#include "sections/5_discussion.typ"
 
 #pagebreak()
 #bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association")
-
+/* 
 #pagebreak()
 #set par(first-line-indent: 0em)
 
