@@ -12,12 +12,19 @@
 
 == Research Design
 
-This study uses a two-stage empirical design to test (H1) whether businesses in Germany systematically use legal mechanisms to suppress negative reviews at a disproportionate scale and (H2) whether removal requests achieve reliably high success rates. The analysis combines aggregate platform-level data with granular complaint-level data to assess both the volume and effectiveness of suppressive reputation management.
 
-Stage 1 examines removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms report moderation decisions by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1–October 20, 2025, reflecting the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression. A disproportionate German share of EU‑wide removals supports H1.
+This study combines aggregate platform-level moderation data with granular complaint-level data to assess both the volume and effectiveness of suppressive reputation management.
 
-Stage 2 evaluates removal success rates using complaint‑level data from the Lumen Database @lumen_lumen_2025, which hosts Google’s transparency reports on defamation‑based takedown requests. Each record identifies targeted review URLs, enabling verification of whether the content remains accessible. The sample includes complaints filed October 1–20, 2025, verified on October 31 (≥10‑day lag) within Lumen’s API rate limits. A 1% Bernoulli random sample supports testing whether success rates exceed 50%, the benchmark at which businesses can reliably expect compliance (H2).
+To test H1, whether businesses in Germany systematically use legal mechanisms to suppress negative reviews at disproportionate scale. I examine removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms report moderation decisions by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1 - October 20, 2025, reflecting the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression.
 
+To test H2, I evaluate whether removal requests achieve reliably high success rates using complaint-level data from the Lumen Database, which hosts Google's transparency reports on defamation-based takedown requests. Each record identifies targeted review URLs, enabling verification of whether the content remains accessible or has been removed. The sample includes complaints filed October 1 to 20, 2025, with verification conducted on October 31. This ensures a minimum 10-day lag between complaint filing and verification, allowing sufficient time for Google to process removal requests given their reported median processing time of less than one day @google_vlosevlop_2025. 
+
+// This study combines aggregate platform-level moderation data with granular complaint-level data to assess both the volume and effectiveness of suppressive reputation management.
+
+// To test H1, whether businesses in Germany systematically use legal mechanisms to suppress negative reviews at disproportionate scale. We examine removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms report moderation decisions by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1 - October 20, 2025, reflecting the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression.
+
+// To test H2, whether removal requests achieve reliably high success rates, we 
+// evaluate complaint-level data from the Lumen Database @lumen_lumen_2025, which hosts Google’s transparency reports on defamation‑based takedown requests. Each record identifies targeted review URLs, enabling verification of whether the content remains accessible. The sample includes complaints filed October 1–20, 2025, verified on October 31 (≥10‑day lag) within Lumen’s API rate limits. 
 #pagebreak()
 
 == Sample Collection
@@ -103,7 +110,7 @@ To examine the composition of these legal removals in more detail, @mod-actions-
     [Illegal or harmful speech], [1,513,139], [$99.88%$],
     [Intellectual property infringements], [1,772], [$0.1%$],
     [Data protection and privacy violations], [29], [$< 0.01%$],
-    [Other violation of T&C #footnote[Terms and Conditions]], [12], [$<0.01%$],
+    [Other violation of T&C], [12], [$<0.01%$],
     [Consumer Information], [4], [$<0.01%$],
     [Protection of minors], [1], [$<0.01%$],
     [*Total*], [1.514.957], [$100%$]
@@ -129,8 +136,8 @@ Illegal or harmful speech represents nearly all Article 16 moderation actions, w
     [Spain], [99], [0.01%],
     [Poland], [74], [$<0.01%$],
     [Austria], [49], [$<0.01%$],
-    [Other #footnote[Combined count for all other EU countries than the ones shown. Countries are sorted by number of total actions]], [91], [$<0.01%$],
-    [*Total*], [1.513.114 #footnote[The total of 1.513.114 here does not match the total actions for illegal and harmful and speech (1.513.139) by 25 removals as those actions are multi-jurisdiction, so they are not captured in the query]], [$100%$]
+    [Other], [106 #footnote[Out of the 106 other, 91 are applied in a single country, and 2 are applied in two or more jurisdictions, and 23 are applied EU-wide]], [$<0.01%$],
+    [*Total*], [1.513.139], [$100%$]
   ),
   caption: [Article 16 ‘Illegal and Harmful Speech’ moderation actions on Google Maps, by country (EU)]
 ) <a16-mod-actions-by-country>
