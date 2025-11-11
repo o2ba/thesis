@@ -12,19 +12,12 @@
 
 == Research Design
 
-
 This study combines aggregate platform-level moderation data with granular complaint-level data to assess both the volume and effectiveness of suppressive reputation management.
 
-To test H1, whether businesses in Germany systematically use legal mechanisms to suppress negative reviews at disproportionate scale. I examine removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms report moderation decisions by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1 - October 20, 2025, reflecting the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression.
+To test H1, I examine whether businesses in Germany systematically use legal mechanisms to suppress negative reviews at disproportionate scale. I analyze removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms must report all moderation decisions in the European Union by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1 - October 20, 2025, reflecting the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression.
 
 To test H2, I evaluate whether removal requests achieve reliably high success rates using complaint-level data from the Lumen Database, which hosts Google's transparency reports on defamation-based takedown requests. Each record identifies targeted review URLs, enabling verification of whether the content remains accessible or has been removed. The sample includes complaints filed October 1 to 20, 2025, with verification conducted on October 31. This ensures a minimum 10-day lag between complaint filing and verification, allowing sufficient time for Google to process removal requests given their reported median processing time of less than one day @google_vlosevlop_2025. 
-
-// This study combines aggregate platform-level moderation data with granular complaint-level data to assess both the volume and effectiveness of suppressive reputation management.
-
-// To test H1, whether businesses in Germany systematically use legal mechanisms to suppress negative reviews at disproportionate scale. We examine removal volumes using transparency disclosures from the Digital Services Act (DSA) Transparency Database @noauthor_dsa_2025. Under Article 17 of the DSA @european_comission_regulation_2022, Very Large Online Platforms report moderation decisions by source, legal basis, and territorial scope. This allows isolation of Germany-specific removals based on defamation and personality-rights claims (Article 16 legal complaints) from voluntary removals under platform policy. The study covers June 1 - October 20, 2025, reflecting the six‑month retrieval limit imposed by the DSA API. Cross‑country comparisons across EU member states assess whether Germany’s removal volumes reflect market size or institutional factors consistent with systematic suppression.
-
-// To test H2, whether removal requests achieve reliably high success rates, we 
-// evaluate complaint-level data from the Lumen Database @lumen_lumen_2025, which hosts Google’s transparency reports on defamation‑based takedown requests. Each record identifies targeted review URLs, enabling verification of whether the content remains accessible. The sample includes complaints filed October 1–20, 2025, verified on October 31 (≥10‑day lag) within Lumen’s API rate limits. 
+ 
 #pagebreak()
 
 == Sample Collection
@@ -43,12 +36,7 @@ The Lumen Database archives legal removal requests that platforms voluntarily sh
 
 The sample includes complaints filed October 1–20, 2025, verified on October 31 (≥10-day lag). This verification window allows sufficient time for Google to process removal requests, as Google's self-reported median processing time for Article 16 notices is less than one day #cite(<google_vlosevlop_2025>, supplement: "§ 2.4").  Using a Bernoulli (1%) sampling procedure, each URL within the study period was independently selected with a probability of 0.01, yielding an unbiased representation of the overall population of reviews. The URLs are extracted into a spreadsheet, and then manually checked if they still exist or if they have been removed at the time of observation. Automation scripts handled API queries, pagination, and sampling to ensure completeness and reproducibility while remaining within rate‑limit constraints.
 
-
 #pagebreak()
-
-/* To efficiently retrieve and process this data within Lumen's rate-limit constraints, the study employs automated infrastructure built using AWS Cloud Development Kit. The architecture consists of several integrated components designed for reliability, scalability, and reproducibility. A Lambda function written in Python serves as the API caller, polling the Lumen API with the following filter parameters: `date_received_facet`, `recipient_name_facet`, `topic_facet`, and `language_facet`. Responses from Lumen are paginated, requiring a page parameter to retrieve the complete dataset for each day. The process is orchestrated by an AWS Step Function, which iterates through the study period (October 1-20, 2025) day by day, handling pagination automatically and implementing exponential backoff and retry logic to respect Lumen's rate limits. Raw API responses are written to Amazon S3 for auditability. Within the Step Function workflow, a second Lambda function performs data normalization. Each Lumen entry contains metadata for a single takedown request alongside an array of reported URLs, often multiple reviews that a business seeks to remove in one complaint. The normalizer flattens this structure so that each URL becomes a separate observation, then applies two filters: retaining only entries where the jurisdictions field contains exclusively `DE` and excluding non-Google Maps URLs. The function also parses the Google Maps Client ID from each URL, which allows for business-level aggregation. Normalized data is written back to S3 in a queryable format. The processed dataset is cataloged using AWS Glue, making it accessible through Amazon Athena's SQL interface. The Bernoulli sampling query is executed in Athena to draw a random sample of URLs for manual verification, ensuring that the labor-intensive task of checking review accessibility remains analytically feasible while maintaining statistical representativeness. */
-
-
 
 == Sample Description
 
@@ -91,7 +79,7 @@ Though this majority of Google Maps moderation actions are of voluntary nature, 
     [Article 16], [1,229], [$0.08%$],
     [Other Type Notification], [130], [$13.19%$],
   ),
-  caption: [Jurisdictional Composition of DSA actions]
+  caption: [Share of EU-Wide moderation actions, by source type]
 ) <jur-composition>
 
 #set par(leading: 2em, justify: true)
@@ -113,7 +101,7 @@ To examine the composition of these legal removals in more detail, @mod-actions-
     [Other violation of T&C], [12], [$<0.01%$],
     [Consumer Information], [4], [$<0.01%$],
     [Protection of minors], [1], [$<0.01%$],
-    [*Total*], [1.514.957], [$100%$]
+    [*Total*], [1,514,957], [$100%$]
   ),
   caption: [Article 16 moderation actions on Google Maps, by decision ground]
 ) <mod-actions-by-cat>
@@ -137,13 +125,15 @@ Illegal or harmful speech represents nearly all Article 16 moderation actions, w
     [Poland], [74], [$<0.01%$],
     [Austria], [49], [$<0.01%$],
     [Other], [106 #footnote[Out of the 106 other, 91 are applied in a single country, and 2 are applied in two or more jurisdictions, and 23 are applied EU-wide]], [$<0.01%$],
-    [*Total*], [1.513.139], [$100%$]
+    [*Total*], [1,513,139], [$100%$]
   ),
   caption: [Article 16 ‘Illegal and Harmful Speech’ moderation actions on Google Maps, by country (EU)]
 ) <a16-mod-actions-by-country>
 #set par(leading: 2em, justify: true)
 
-The vast majority of Article 16 “Illegal and Harmful Speech” moderation actions occurred in Germany, with only minimal counts reported for other EU member states. To show the composition of Germany’s actions in greater detail, @illegal-reason-breakdown breaks down these moderation actions by the specific legal mechanism invoked.
+// .The vast majority of Article 16 “Illegal and Harmful Speech” moderation actions occurred in Germany, with only minimal counts reported for other EU member states. To show the composition of Germany’s actions in greater detail, @illegal-reason-breakdown breaks down these moderation actions by the specific legal mechanism invoked.
+
+The vast majority of Article 16 "Illegal and Harmful Speech" moderation actions occurred in Germany, with only minimal counts reported for other EU member states. This concentration reflects reported enforcement activity rather than necessarily the underlying prevalence of contested reviews across jurisdictions. To show the composition of Germany's actions in greater detail, @illegal-reason-breakdown breaks down these moderation actions by the specific legal mechanism invoked.Retry
 
 #set par(leading: 1em, justify: false)
 
@@ -161,94 +151,8 @@ The vast majority of Article 16 “Illegal and Harmful Speech” moderation acti
 ) <illegal-reason-breakdown>
 #set par(leading: 2em, justify: true)
 
-Combined, Germany-specific defamation removals constitute 1,512,595 of the 1,514,957 total Article 16 actions across all categories and jurisdictions (99.84%) #footnote[$1,512,595 div 1,514,957 = 99.84%$]. No significance is conducted as Germany's figures are orders of magnitude #footnote[$log_10 (1,512,700 div 100) = 4.1797$] higher than comparable countries 
+Combined, Germany-specific defamation removals constitute 1,512,595 of the 1,514,957 total Article 16 actions across all categories and jurisdictions (99.84%) #footnote[$1,512,595 div 1,514,957 = 99.84%$]. 
 
 === Lumen Database
 
 Using a Bernoulli (1%) sampling procedure, each URL within the study period was independently selected with a probability of 0.01, yielding an unbiased representation of the overall population of reviews. This produced a sample of 994 URLs from 98,106 complaints filed during October 1–20, 2025. The URLs were extracted into a spreadsheet and manually checked for whether they remained accessible or had been removed at the time of observation. After removing invalid URLs #footnote[The removed URLs led to an empty google maps page with no deleted review or business] (11 in total), the final sample consisted of 983 URLs. Among the valid URLs, 840 were confirmed removed, yielding a success rate of 85.45%, with a 95% confidence interval of [83.2%; 87.7%] #footnote[Standard error calculated as SE = $sqrt([hat(p)(1-hat(p)) slash n])$ = $sqrt(0.8545(1-0.8545) slash 983) = 0.0112$, yielding a 95% CI of $85.45 plus.minus 1.96 dot (1.12%) = [83.2%; 87.7%] $]
-
-
-/* == Analytical Approach
-
-=== Scale of removal activity (RQ1/H1)
-
-To assess whether German businesses systematically use legal mechanisms for review removal, Article 16 removals classified as illegal and harmful speech are aggregated from the DSA Transparency Database. Germany-specific defamation removals are isolated using territorial scope filters and detailed decision ground classifications.
-
-Removal volumes from France, Spain, Poland, and Austria serve as comparison points. These jurisdictions share similar legal traditions (civil law systems), economic development levels, and digital infrastructure but operate under different personality-rights frameworks, which are defined by national law. The magnitude of cross-country differences is quantified using orders of magnitude calculations (log₁₀ of removal ratios). Because the DSA database constitutes a complete census rather than a sample, removal counts are population parameters requiring no inferential statistics.
-
-=== Removal success rate analysis (RQ2/H2)
-
-Overall removal success rates are calculated as the proportion of sampled URLs (n=983) no longer accessible at the observation date, with 95% confidence intervals using standard error for proportions (SE = √[p̂(1-p̂)/n]).
-Removal rates are then disaggregated by filing intensity quartiles. Each sampled URL is classified by its associated business's quartile position in the complaint volume distribution (Table 6: Q1 = top 144 businesses, Q2 = ranks 145-665, Q3 = ranks 666-2,227, Q4 = remaining businesses). Separate removal rates and 95% confidence intervals are calculated for each quartile. Non-overlapping confidence intervals indicate differences unlikely attributable to sampling variation (α = 0.05).
-
-
-/*
-=== Lumen Database
-
-The Lumen Database provides granular, complaint-level data that enables analysis of removal success rates and the distribution of suppression activity across businesses. Unlike the DSA Transparency Database, which reports moderation actions, Lumen reports moderation requests.
-
-@lumen-summary presents a summary of the extracted data, on the total number of clients (unique businesses), and total number of review submitted to Lumen in the study period. This represents the full population. This data represents requests in Germany only
-
-#set par(leading: 1em, justify: false)
-#figure(
-  table(
-    columns: (1fr, 1fr),
-    table.header([], [Total]),
-    [*Businesses*], [13,691],
-    [*Removal Requests*], [98,106]
-  ),
-  caption: [Lumen Database, population size of businesses and removals]
-) <lumen-summary>
-#set par(leading: 2em, justify: true)
-
-/* Two analytical approaches apply to this dataset. First, aggregating complaints by the business Client ID embedded in each review URL reveals the distribution of filing activity: whether complaints originate primarily from many businesses filing occasionally or from a concentrated subset filing repeatedly. Second, the review URLs can be manually verified to determine whether contested content remains accessible or has been removed, providing a direct measure of business success rates. */
-
-/* To assess the concentration of filing activity, we rank businesses by complaint volume and identify the minimum number of businesses whose cumulative complaints account for 25%, 50%, and 75% of all removal requests.  @lumen-aggregation shows the results of this analysis.
-
-#set par(leading: 1em, justify: false)
-#figure(
-  table(
-    columns: (1fr, 1fr, 1fr),
-    table.header([Quartile], [Total Businesses], [Cumulative Complaints]),
-    [Q1 $(25%)$], [144], [24,686],
-    [Q2 $(50%)$], [665], [49,553],
-    [Q3 $(75%)$], [2,227], [73,716],
-    [Q4 $(100%)$], [13,691], [98,106]
-  ),
-  caption: [Requesting businesses, quartile distribution by complaint volume]
-) <lumen-aggregation>
-#set par(leading: 2em, justify: true) */
-
-A random sample of 994 URLs (representing 1% of the total population) was drawn to analyze removal rates. After excluding 11 invalid entries, the final valid sample comprised 983 URLs. The observation of whether the data was removed was made on October 31st. Among the 983 valid URLs, 840 were confirmed removed, yielding a success rate of 85.45%, with a 95% confidence interval of [83.2%; 87.7%] #footnote[Standard error calculated as SE = $sqrt([hat(p)(1-hat(p)) slash n])$ = $sqrt(0.8545(1-0.8545) slash 983) = 0.0112$, yielding a 95% CI of $85.45 plus.minus 1.96 dot (1.12%) = [83.2%; 87.7%] $]
-
-/* Each sampled URL was classified according to its associated business's quartile position from @lumen-aggregation, yielding the following distribution: Q1 filers (top 144 businesses, n=202 sampled URLs), Q2 filers (ranks 145-665, n=257), Q3 filers (ranks 666-2,227, n=234), and Q4 filers (all remaining businesses, n=290). Removal rates were calculated separately for each quartile category.
-
-#set par(leading: 1em, justify: false)
-#figure(
-  table(
-    columns: (120pt, 75pt, 75pt, 100pt, 100pt),
-    table.header([Category], [n], [Removed], [Removal Rate], [95% CI #footnote[Standard error calculated as SE = $sqrt([hat(p)(1-hat(p)) slash n])$]]),
-    [Q1 (Top 144)], [202], [193], [95.5%], [[92.7%, 98.4%]],
-    [Q2 (145-665)], [257], [223], [86.8%], [[82.6%, 90.9%]],
-    [Q3 (666-2,227)], [234], [197], [84.2%], [[79.5%, 88.9%]],
-    [Q4 (Remaining)], [290], [227], [78.3%], [[73.5%, 83.0%]],
-    [*All Businesses*], [*983*], [*840*], [*85.5%*], [[83.2%, 87.7%]
-]
-  ),
-  caption: [Summary of removals for all businesses, and per quartile]
-) <lumen-aggregation2>
-#set par(leading: 2em, justify: true) */
-#pagebreak()
-
-== Analytical Approach
-
-=== Scale of removal activity (RQ1/H1)
-
-To assess whether German businesses systematically use legal mechanisms for review removal, Article 16 removals classified as illegal and harmful speech are aggregated from the DSA Transparency Database. Germany-specific defamation removals are isolated using territorial scope filters and detailed decision ground classifications.
-
-Removal volumes from France, Spain, Poland, and Austria serve as comparison points. These jurisdictions share similar legal traditions (civil law systems), economic development levels, and digital infrastructure but operate under different personality-rights frameworks, which are defined by national law. The magnitude of cross-country differences is quantified using orders of magnitude calculations (log₁₀ of removal ratios). Because the DSA database constitutes a complete census rather than a sample, removal counts are population parameters requiring no inferential statistics.
-
-=== Removal success rate analysis (RQ2/H2)
-
-Overall removal success rates are calculated as the proportion of sampled URLs (n=983) no longer accessible at the observation date, with 95% confidence intervals using standard error for proportions (SE = √[p̂(1-p̂)/n]).
-Removal rates are then disaggregated by filing intensity quartiles. Each sampled URL is classified by its associated business's quartile position in the complaint volume distribution (Table 6: Q1 = top 144 businesses, Q2 = ranks 145-665, Q3 = ranks 666-2,227, Q4 = remaining businesses). Separate removal rates and 95% confidence intervals are calculated for each quartile. Non-overlapping confidence intervals indicate differences unlikely attributable to sampling variation (α = 0.05).

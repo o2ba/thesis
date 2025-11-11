@@ -1,6 +1,6 @@
 = Results
 
-This section presents empirical findings from both stages of the analysis. We examine first the volume geographic distribution of legal review moderation actions across EU member states using data from the DSA Transparency Database, testing whether Germany exhibits disproportionate moderation activity consistent with systematic suppression (H1). Then, we analyze removal success rates using complaint-level data from the Lumen Database, testing whether businesses can reliably expect their takedown requests to succeed (H2).
+This section presents empirical findings from both stages of the analysis. I examine first the volume geographic distribution of legal review moderation actions across EU member states using data from the DSA Transparency Database, testing whether Germany exhibits disproportionate moderation activity consistent with systematic suppression (H1). Then, I analyze removal success rates using complaint-level data from the Lumen Database, testing whether businesses can reliably expect their takedown requests to succeed (H2).
 
 == Volume and Geographic Distribution of Legal Actions
 

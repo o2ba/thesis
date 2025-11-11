@@ -1,3 +1,0 @@
-= Appendix
-
-== Transparency Database, Columns

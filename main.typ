@@ -114,12 +114,13 @@
 #include "sections/6_conclusion.typ"
 
 #pagebreak()
-#bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association")
-/* 
+#show bibliography: set heading(numbering: "1.")
+#bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association",)
+
 #pagebreak()
 #set par(first-line-indent: 0em)
 
 #set page(flipped: true)
-#include "sections/appendix/1_tdb_cols.typ"
+#include "sections/appendix/transparency_database.typ"
 
 // #include "sections/appendix/lumen.typ"
