@@ -6,15 +6,11 @@
 
 Ninety-eight percent of consumers read online reviews before choosing where to eat, shop, or find services, making digital reputation a central mechanism of market trust @brightlocal_us_2023. Even minor changes in average ratings visibly affect revenue; on Yelp, a 0.01-point shift around a rounding threshold can increase restaurant bookings by almost 50 percent @anderson_learning_2012. Star ratings convert subjective experiences into market signals that directly influence firm performance.
 
-Prior research has largely examined additive reputation management, which amplifies positive signals such as promotional or solicited reviews @mayzlin_promotional_2014. In contrast, suppressive reputation management, the strategic removal or concealment of negative reviews through legal, technical, or procedural means, remains understudied. Recent investigative reporting documents growing complaints of arbitrary review removals in Germany, where businesses leverage defamation law to force platforms to delete unfavorable reviews @wulfers_warum_2025. A structured market of Löschagenturen, or deletion agencies, now advertises fixed-price review removal packages claiming success rates exceeding 90 percent @wulfers_warum_2025. If deletion has become a standardized service in Germany, this raises two fundamental questions about the scale and effectiveness of review deletion as a marketing in
+Prior research has largely examined additive reputation management, which amplifies positive signals such as promotional or solicited reviews @mayzlin_promotional_2014. In contrast, suppressive reputation management, the strategic removal or concealment of negative reviews through legal, technical, or procedural means, remains understudied. Recent investigative reporting documents growing complaints of arbitrary review removals in Germany, where businesses leverage defamation law to force platforms to delete unfavorable reviews @wulfers_warum_2025. A structured market of Löschagenturen, or deletion agencies, now advertises fixed-price review removal packages claiming success rates exceeding 90 percent @wulfers_warum_2025. If deletion has become a standardized service in Germany, this raises two fundamental questions about the scale and effectiveness of review deletion:
 
-/*
-  Is systematic review removal a Germany-specific phenomenon within the European Union, and how effective is it as a reputation management mechanism?
-*/
+-- *RQ1*: What proportion of review removal requests result in actual deletion?
 
--- *RQ1*: Do businesses in Germany systematically use legal mechanisms to remove negative reviews at significant scale?
-
--- *RQ2*:What proportion of review removal requests result in actual deletion?
+-- *RQ2*: Do businesses in Germany systematically use legal mechanisms to remove negative reviews at significant scale?
 
 The implications extend beyond competitive fairness: consumers may select businesses based on artificially sanitized reputations, platforms effectively become arbiters of commercial speech rather than neutral intermediaries, and the market’s signaling function is distorted in favor of firms with resources to suppress negative feedback. For these businesses, legal or procedural removal offers a strategic reputational advantage, an alternative to competing on quality or customer satisfaction. Understanding where and how this distortion occurs requires close attention to the institutional and platform environments in which reputation is mediated.
 

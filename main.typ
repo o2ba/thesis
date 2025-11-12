@@ -1,6 +1,8 @@
 #import "@preview/glossy:0.8.0": theme-compact
 #import "@preview/glossy:0.8.0": *
 
+
+
 #set heading(numbering: "1.")
 
 #let conf(doc, cols) = {
@@ -109,18 +111,22 @@
 #include "sections/3_methodology.typ"
 #pagebreak()
 #include "sections/4_results.typ"
+/*
 #pagebreak()
 #include "sections/5_discussion.typ"
 #include "sections/6_conclusion.typ"
 
 #pagebreak()
+*/
+#pagebreak()
 #show bibliography: set heading(numbering: "1.")
 #bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association",)
 
+/*
 #pagebreak()
 #set par(first-line-indent: 0em)
+#include "sections/appendix/court_cases.typ"
 
 #set page(flipped: true)
 #include "sections/appendix/transparency_database.typ"
-
 // #include "sections/appendix/lumen.typ"

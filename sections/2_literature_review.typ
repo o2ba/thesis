@@ -1,5 +1,6 @@
 = Literature Review and Theoretical Framework
 
+
 #set par(leading: 1em, justify: false)
 
 #show table.cell.where(y: 0): strong
@@ -10,8 +11,6 @@
   },
   align: left
 ) 
-
-*Literature Table*
 
 #table(
   columns: (130pt, 1fr),
@@ -32,25 +31,7 @@
   [#cite(<babic_rosario_conceptualizing_2020>, form: "prose")], [Conceptualizes eWOM process in three stages: creation, exposure, and evaluation; organizes literature using consumer motivation-opportunity-ability (MOA) framework],
 )
 
-*Legal Rulings Summary*
 
-#table(
-  columns: (160pt, 1fr),
-  table.header([Case], [Decision(s)]),
-  [Gynecologist ./ Jameda
-  @noauthor_bgh_2014], [Gynecologist wanted his entire history removed from Jameda. He argued that the inclusion on the platform violated his personal rights. Court ruled in favor of the platform.],
-  [Dentist ./. Jameda \ #cite(<noauthor_bgh_2016>, form: "normal")],  [A user posted a negative review on a dentist's profile on Jameda. Dentist argued there was no customer relationship. Court held that Jameda did not do enough to verify relationship],
-  [Holiday park operator ./. HolidayCheck \ @noauthor_bgh_2022], [Holiday park operator claimed multiple reviews lacked customer contact. Court held that business's unverified assertion of non-contact obligates platform to investigate; burden of proving contact falls on platform]
-)
-
-*Directives and Law*
-
-#table(
-  columns: (160pt, 1fr),
-  table.header([Case], [Summary]),
-  [E-Commerce Directive \ @noauthor_directive_2000], [Establishes basic legal framework for online services in the EU, granting conditional liability for user-generated content if they act promptly on knowledge of illegal material],
-  [Digital Services Act @european_comission_regulation_2022],  [Modernizes and expands EU platform regulation, mandating transparency, risk mangement and due process in content moderating],
-)
 
 
 #set par(leading: 2em, justify: true)
@@ -98,7 +79,21 @@ Because data protection law prevents platforms from disclosing reviewer identiti
 
 == Research Framework and Hypotheses
 
-The theoretical foundation identifies a reciprocal incentive structure between firms and platforms. Firms have strong economic motivation to remove negative reviews because negativity bias means that a single one-star review inflicts more damage than multiple five-star reviews can repair @baumeister_bad_2001 @chevalier_effect_2006. For platforms operating in Germany, expansive personality-rights protections and Federal Court rulings convert legal notice into obligation, making removal the economically rational response to liability risk @noauthor_bgh_2014 @noauthor_bgh_2016 @noauthor_bgh_2022. When both sides of the market face aligned incentives, businesses seeking suppression and platforms seeking liability avoidance, systematic deletion becomes a predictable equilibrium outcome rather than an occasional legal remedy.This convergence should manifest empirically in two observable patterns. 
+The theoretical foundation identifies a reciprocal incentive structure between firms and platforms. For platforms operating in Germany, expansive personality-rights protections and Federal Court rulings convert legal notice into obligation, making removal the economically rational response to liability risk @noauthor_bgh_2014 @noauthor_bgh_2016 @noauthor_bgh_2022. When German courts place the burden of proving customer contact on platforms while data protection law prevents platforms from obtaining such evidence, compliance becomes the legally safer response than case-by-case adjudication. For businesses, this creates strong economic incentives to pursue removal: negativity bias means that a single one-star review inflicts more damage than multiple five-star reviews can repair @baumeister_bad_2001 @chevalier_effect_2006, making suppression more effective than additive reputation management. When platforms face aligned incentives toward compliance and businesses face aligned incentives toward suppression, predictable removal outcomes become the equilibrium rather than uncertain legal adjudication. This convergence should manifest empirically in two observable patterns.
+
+First, if platforms approve removal requests to minimize liability exposure, businesses should experience consistently high success rates when contesting reviews. The theoretical mechanism operates through asymmetric costs and legal obligations specific to Germany’s institutional framework. When businesses dispute reviews claiming no customer relationship exists, German court precedents require platforms to investigate and verify the relationship. This converts what might elsewhere be discretionary moderation into mandatory adjudication: platforms cannot simply ignore claims but must actively seek evidence from reviewers. Verification requires contacting reviewers, evaluating their responses, and assessing credibility, each step consuming resources while introducing delay that may itself constitute inadequate response under liability frameworks.
+
+However, platforms face fundamental constraints in fulfilling this obligation. They lack direct access to transaction records, cannot compel reviewers to respond, and must rely on voluntary cooperation from users who may not monitor their accounts or wish to engage. Meanwhile, German courts have established that if platforms cannot verify the customer relationship through investigation, the business’s claim is deemed admitted, making removal legally compulsory.
+
+This creates an asymmetric decision calculus. Removal eliminates legal liability immediately and with certainty. Retention, even of potentially legitimate reviews, requires successful verification through a process the platform cannot fully control. While platforms incur reputational costs from excessive deletion because reputation systems only function when users view aggregated feedback as trustworthy @dellarocas_digitization_2003, the immediate and certain risk of legal sanction outweighs the diffuse long-term cost of reduced credibility. Consequently, platforms face structural incentives to remove most contested reviews expediently rather than adjudicate them on their merits. This mechanism should yield success rates that are predictably high, a clear majority, often approaching but not reaching total compliance, in line with defensive and risk-averse moderation rather than individualized case assessment.
+
+-- *H1*: _Review removal requests under legal pretexts achieve reliably high success rates on Google Maps in Germany once filed_
+
+Second, if removal operates as a reliable strategy with predictable outcomes rather than uncertain legal remedy, businesses should pursue it systematically at substantial volume. High success rates transform removal from risky litigation into proceduralized reputation management, incentivizing repeated use and diffusion across businesses. The Digital Services Act's mandatory transparency reporting makes this pattern observable: platforms must now disclose removal requests and their legal basis across all EU member states @european_comission_regulation_2022. If removal has become institutionalized practice, Germany should exhibit substantial removal volumes reflecting widespread adoption. Moreover, systematic use should manifest in business-level patterns: repeated filing by individual businesses, procedural standardization in how claims are filed, and learning effects where frequent filers achieve higher success rates through optimization.
+
+-- *H2*: _German businesses utilize legal review removal mechanisms at material scale, with patterns consistent with systematic practice rather than episodic legal remedy_
+
+/* The theoretical foundation identifies a reciprocal incentive structure between firms and platforms. Firms have strong economic motivation to remove negative reviews because negativity bias means that a single one-star review inflicts more damage than multiple five-star reviews can repair @baumeister_bad_2001 @chevalier_effect_2006. For platforms operating in Germany, expansive personality-rights protections and Federal Court rulings convert legal notice into obligation, making removal the economically rational response to liability risk @noauthor_bgh_2014 @noauthor_bgh_2016 @noauthor_bgh_2022. When both sides of the market face aligned incentives, businesses seeking suppression and platforms seeking liability avoidance, systematic deletion becomes a predictable equilibrium outcome rather than an occasional legal remedy.This convergence should manifest empirically in two observable patterns. 
 
 First, if Germany's institutional environment truly enables suppressive reputation management, removal activity should occur at substantial volume. The Digital Services Act's mandatory transparency reporting makes this pattern observable: platforms must now disclose removal requests and their legal basis across all EU member states @european_comission_regulation_2022. Germany's protective legal regime, where businesses can trigger platform investigation obligations through simple assertion of non-contact, should produce significant removal activity reflecting systematic use of legal mechanisms for reputation management.
 

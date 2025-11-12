@@ -54,6 +54,12 @@ A JSON body has to be passed with the respective SQL query. The JSON body is as 
   "query": "..."
 }```
 
+#heading(outlined: false, offset: 2)[Get population for Google Maps]
+
+```sql
+select count(*) as decision_count from statement_index where received_date between '2025-06-01' and '2025-10-20' and platform_name = 'Google Maps'
+```
+
 #heading(outlined: false, offset: 2)[Get Google Maps Moderation Actions, Grouped by source type]
 
 ```sql
@@ -151,3 +157,5 @@ Query 2: Court Order Removals
 ```sql
 select count(*) as decision_count from statement_index where received_date between '2025-06-01' and '2025-10-20' and platform_name = 'Google Maps' and source_type = 'SOURCE_ARTICLE_16' and category = 'STATEMENT_CATEGORY_ILLEGAL_OR_HARMFUL_SPEECH' and illegal_content_explanation like '%court%' and territorial_scope = 'de' and not territorial_scope = 'at' and not territorial_scope = 'be' and not territorial_scope = 'bg' and not territorial_scope = 'hr' and not territorial_scope = 'cy' and not territorial_scope = 'cz' and not territorial_scope = 'dk' and not territorial_scope = 'ee' and not territorial_scope = 'fi' and not territorial_scope = 'fr' and not territorial_scope = 'gr' and not territorial_scope = 'hu' and not territorial_scope = 'ie' and not territorial_scope = 'it' and not territorial_scope = 'lv' and not territorial_scope = 'lt' and not territorial_scope = 'lu' and not territorial_scope = 'mt' and not territorial_scope = 'nl' and not territorial_scope = 'pl' and not territorial_scope = 'pt' and not territorial_scope = 'ro' and not territorial_scope = 'sk' and not territorial_scope = 'si' and not territorial_scope = 'es' and not territorial_scope = 'se' 
 ```
+
+#heading(outlined: false, offset: 2)[Get Defamation removals in Germany, by week (test for temporal consistency)]

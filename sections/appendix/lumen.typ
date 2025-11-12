@@ -27,6 +27,49 @@
 )
 
 
+*how many biz to 80%*
+
+#figure(
+  [
+    #codly(languages: codly-languages)
+    ```sql
+WITH client_reports AS (
+  SELECT 
+    clientid,
+    COUNT(*) AS total_reports
+  FROM lumen_normalized
+  WHERE CAST(date AS DATE) BETWEEN DATE '2025-10-01' AND DATE '2025-10-20'
+    AND jurisdiction = 'DE'
+  GROUP BY clientid
+),
+ranked AS (
+  SELECT
+    clientid,
+    total_reports,
+    ROW_NUMBER() OVER (ORDER BY total_reports DESC) AS rownum,
+    SUM(total_reports) OVER (ORDER BY total_reports DESC) AS cumulative_reports,
+    SUM(total_reports) OVER () AS total_reports_all
+  FROM client_reports
+),
+threshold AS (
+  SELECT 
+    total_reports_all * 0.8 AS target_80pct
+  FROM ranked
+  LIMIT 1
+)
+SELECT 
+  COUNT(*) AS num_businesses_to_80pct
+FROM ranked, threshold
+WHERE cumulative_reports <= target_80pct;
+  ```
+  ],
+  caption: [Get the total population size $Omega$, by URL],
+  supplement: [SQL Query],
+  kind: "code"
+)
+
+
+
 *Quartile Concentration by Business*
 
 #figure(
