@@ -20,8 +20,6 @@ The EU Digital Services Act Transparency Database @european_comission_regulation
 
 The two databases cover different time periods due to access constraints and methodological requirements. Lumen data spans October 1–20, 2025, with removal verification conducted October 31. This narrow window ensures sufficient processing time (minimum 10 days) given Google's reported median response time of less than one day @google_vlosevlop_2025, while maintaining temporal proximity between complaint filing and outcome verification. DSA data spans June 1–October 20, 2025, reflecting the API's six-month historical limit at the time of data collection. Despite these different periods, the databases serve distinct analytical purposes: Lumen measures granular outcomes and business-level patterns during a focused verification window, while DSA establishes aggregate patterns over a longer observation period that captures sustained activity rather than short-term fluctuation.
 
-Together, these sources enable testing both hypotheses. H1 (high success rates) is tested primarily using Lumen's complaint-level data. H2 (systematic suppression at scale) is tested using DSA aggregate volumes to establish material magnitude, complemented by Lumen business-level data to examine whether removal exhibits characteristics of systematic practice: concentration among repeat filers, procedural standardization, and positive correlation between filing frequency and success rates indicative of learning effects.
-
  
 #pagebreak()
 

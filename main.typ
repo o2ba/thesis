@@ -107,17 +107,15 @@
 #include "sections/1_introduction.typ" 
 #pagebreak()
 #include "sections/2_literature_review.typ"
-#pagebreak()
 #include "sections/3_methodology.typ"
 #pagebreak()
 #include "sections/4_results.typ"
-/*
-#pagebreak()
-#include "sections/5_discussion.typ"
-#include "sections/6_conclusion.typ"
 
 #pagebreak()
-*/
+// #include "sections/5_discussion.typ"
+#include "sections/6_conclusion.typ"
+
+
 #pagebreak()
 #show bibliography: set heading(numbering: "1.")
 #bibliography(("bibliography/introduction.bib", "bibliography/other.bib", "bibliography/methodology.bib", "bibliography/academic-papers/a-journals.bib"), style: "american-psychological-association",)
